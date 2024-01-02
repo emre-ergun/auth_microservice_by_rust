@@ -49,8 +49,7 @@ impl Auth for AuthService {
         .users_service
         .lock()
         .expect("Lock should not be poisoned")
-        .get_user_uuid(req.username, req.password);
-; // Get user's uuid from `users_service`. Panic if the lock is poisoned.
+        .get_user_uuid(req.username, req.password);// Get user's uuid from `users_service`. Panic if the lock is poisoned.
 
         // Match on `result`. If `result` is `None` return a SignInResponse with a the `status_code` set to `Failure`
         // and `user_uuid`/`session_token` set to empty strings.
